@@ -8,6 +8,7 @@ import android.os.Looper;
 import android.util.Log;
 import com.example.untitled.R;
 import com.example.untitled.model.Message;
+import com.example.untitled.model.dao.MessageDao;
 import com.example.untitled.utils.TwitterUtils;
 import twitter4j.*;
 import twitter4j.auth.AccessToken;
@@ -40,11 +41,13 @@ public class TwitterServiceImpl implements TwitterService{
     private RequestToken requestToken;
     private SharedPreferences sharedPreferences;
     private Context context;
+    private MessageDao messageDao;
 
     public TwitterServiceImpl(Context context) {
         super();
         this.context = context;
         this.sharedPreferences = context.getSharedPreferences("MyPref", 0);
+        this.messageDao = new MessageDao(context);
     }
 
     @Override
@@ -112,13 +115,18 @@ public class TwitterServiceImpl implements TwitterService{
                     Iterator<Status> iterator = responseList.iterator();
                     Collection<Message> messages = new LinkedList<Message>();
                     while(iterator.hasNext()) {
-                        Status status = iterator.next();
+                       Status status = iterator.next();
                        messages.add(TwitterUtils.getMessageFromStatus(status));
-
                     }
+                    messageDao.open();
+                    for (Message message : messages) {
+                        messageDao.insert(message);
+                    }
+                    messageDao.close();
                 } catch (TwitterException e) {
                     e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }
+
                 Looper.loop();
             }});
         th.start();

@@ -8,5 +8,5 @@ package com.example.untitled.model;
  * To change this template use File | Settings | File Templates.
  */
 public enum MessageType {
-    INBOX, TWEET, WALL
+    FACEBOOK_INBOX, TWEET, WALL
 }

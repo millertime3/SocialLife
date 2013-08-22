@@ -2,6 +2,7 @@ package com.example.untitled.utils;
 
 import android.util.Log;
 import com.example.untitled.model.Message;
+import com.example.untitled.model.MessageType;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,6 +28,7 @@ public class FacebookUtils {
                 Date createdDate = new Date(Long.parseLong(o.get("created_time").toString())*1000);
                 message.setCreatedDate(createdDate);
                 message.setBody(o.get("body").toString());
+                message.setType(MessageType.FACEBOOK_INBOX);
                 messages.add(message);
             }
         } else {

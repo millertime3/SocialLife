@@ -1,6 +1,8 @@
 package com.example.untitled.services;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 
 /**
@@ -11,4 +13,7 @@ import android.net.Uri;
  * To change this template use File | Settings | File Templates.
  */
 public interface FacebookService {
+    void requestOauthentication(Activity activity, int requestCode, int responseCode, Intent intent);
+
+    void loadMessages();
 }

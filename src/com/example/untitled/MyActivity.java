@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.untitled.model.Message;
+import com.example.untitled.services.FacebookService;
+import com.example.untitled.services.FacebookServiceImpl;
 import com.example.untitled.services.TwitterService;
 import com.example.untitled.services.TwitterServiceImpl;
 import com.facebook.*;
@@ -65,10 +67,12 @@ public class MyActivity extends Activity implements ConnectionCallbacks,OnConnec
 
     private UiLifecycleHelper uiHelper;
     private TwitterService twitterService;
+    private FacebookService facebookService;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         twitterService = new TwitterServiceImpl(getApplicationContext());
+        facebookService = new FacebookServiceImpl(getApplicationContext());
         setContentView(R.layout.main);
         mPlusClient = new PlusClient.Builder(this, this, this)
                 .setVisibleActivities("http://schemas.google.com/AddActivity",
@@ -96,8 +100,13 @@ public class MyActivity extends Activity implements ConnectionCallbacks,OnConnec
         });
     }
 
+    public void loadTwitterMessages(View view) {
+        twitterService.loadMessages();
+        facebookService.loadMessages();
+    }
+
     public void showTwitterMessage(View view) {
-       twitterService.loadMessages();
+        showMessagePage(view);
     }
 
     public void authenticateTwitter(View view) {
@@ -206,32 +215,7 @@ public class MyActivity extends Activity implements ConnectionCallbacks,OnConnec
             mConnectionResult = null;
             mPlusClient.connect();
         }
-        //Facebook
-        Session.getActiveSession().onActivityResult(this, requestCode, responseCode, intent);
-        // start Facebook Login
-        Session.openActiveSession(this, true, new Session.StatusCallback() {
 
-            // callback when session changes state
-            @Override
-            public void call(Session session, SessionState state, Exception exception) {
-                if (session.isOpened()) {
-
-                    // make request to the /me API
-                    Request.executeMeRequestAsync(session, new Request.GraphUserCallback() {
-
-                        // callback after Graph API response with user object
-                        @Override
-                        public void onCompleted(GraphUser user, Response response) {
-                            MyActivity.this.user = user;
-//                            if (user != null) {
-//                                TextView welcome = (TextView) findViewById(R.id.welcome);
-//                                welcome.setText("Hello " + user.getName() + "!");
-//                            }
-                        }
-                    });
-                }
-            }
-        });
     }
 
     @Override

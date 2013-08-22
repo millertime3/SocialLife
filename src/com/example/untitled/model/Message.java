@@ -10,7 +10,7 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 public class Message {
-    private String id;
+    private Long id;
     private String messageThreadId;
     private String from;
     private String to;
@@ -52,11 +52,11 @@ public class Message {
         this.from = from;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
