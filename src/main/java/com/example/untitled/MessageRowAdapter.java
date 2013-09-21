@@ -2,17 +2,13 @@ package com.example.untitled;
 
 import android.app.Activity;
 import android.database.DataSetObserver;
-import android.graphics.drawable.Drawable;
 import android.text.format.DateFormat;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 import com.example.untitled.model.Message;
-import com.example.untitled.model.MessageType;
 
 import java.util.List;
 
@@ -44,7 +40,7 @@ public class MessageRowAdapter implements ListAdapter {
                 image.setImageResource(R.drawable.twitter_logo);
                 break;
             case FACEBOOK_INBOX:
-                image.setImageResource(R.drawable.com_facebook_icon);
+                image.setImageResource(R.drawable.com_facebook_logo);
                 break;
             default:
                 break;

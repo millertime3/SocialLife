@@ -1,9 +1,7 @@
 package com.example.untitled.services;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,7 +10,7 @@ import android.net.Uri;
  * Time: 6:25 PM
  * To change this template use File | Settings | File Templates.
  */
-public interface FacebookService {
+public interface FacebookService extends MessageService{
     void requestOauthentication(Activity activity, int requestCode, int responseCode, Intent intent);
 
     void loadMessages();

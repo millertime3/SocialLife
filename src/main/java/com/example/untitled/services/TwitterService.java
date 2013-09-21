@@ -9,7 +9,7 @@ import android.net.Uri;
  * Time: 7:01 PM
  * To change this template use File | Settings | File Templates.
  */
-public interface TwitterService {
+public interface TwitterService extends MessageService{
     void processOauthCallback(Uri uri);
 
     boolean isLoggedin();

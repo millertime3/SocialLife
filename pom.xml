@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>com.example</groupId>
+    <artifactId>milyfe</artifactId>
+    <version>1.0</version>
+
+    <packaging>apk</packaging>
+    <name>MiLyfe</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>7</maven.compiler.source>
+        <maven.compiler.target>7</maven.compiler.target>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>The mavenized Facebook Android API</id>
+            <url>http://avianey.github.io/facebook-api-android-maven/</url>
+        </repository>
+    </repositories>
+    
+    <dependencies>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>2.2.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.twitter4j</groupId>
+            <artifactId>twitter4j-core</artifactId>
+            <version>[3.0,)</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-plus</artifactId>
+            <version>v1-rev99-1.17.0-rc</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.avianey</groupId>
+            <artifactId>facebook-android-api</artifactId>
+            <version>3.5</version>
+            <type>apklib</type>
+            <exclusions>
+                <exclusion>
+                    <artifactId>support-v4</artifactId>
+                    <groupId>com.google.android</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android.gms</groupId>
+            <artifactId>google-play-services</artifactId>
+            <version>1</version>
+            <type>apklib</type>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>15.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+
+    <build>
+        <!-- This should be just the artifact identifier, no version on the APK file,
+             because this is what IntelliJ will use by default.
+        -->
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>maven-android-plugin</artifactId>
+                <version>2.6.0</version>
+                <configuration>
+                    <sdk>
+                        <!-- Don't forget to set your ANDROID_HOME environment variable to your SDK directory! -->
+                        <path>/home/brian/Videos/adt-bundle-linux-x86_64-20130917/sdk</path>
+
+                        <!-- Platform 8 is Android 2.2 -->
+                        <platform>18</platform>
+
+                    </sdk>
+                    
+                    <!-- All of these go into the /src/main/android/ directory, we don't
+                         want to polute the project root directory. -->
+                    <androidManifestFile>${project.basedir}/src/main/android/AndroidManifest.xml</androidManifestFile>
+                    <resourceDirectory>${project.basedir}/src/main/android/res</resourceDirectory>
+                    <assetsDirectory>${project.basedir}/src/main/android/assets</assetsDirectory>
+                    <nativeLibrariesDirectory>${project.basedir}/src/main/android/native</nativeLibrariesDirectory>
+                    <resourceOverlayDirectory>${project.basedir}/src/main/android/overlay</resourceOverlayDirectory>
+                    
+                    <!-- Read the Android Maven plugin documentation about these settings -->
+                    <deleteConflictingFiles>true</deleteConflictingFiles>
+                    <undeployBeforeDeploy>true</undeployBeforeDeploy>
+
+                </configuration>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
+    
+</project>

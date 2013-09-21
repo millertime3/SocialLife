@@ -1,31 +1,24 @@
 package com.example.untitled.services;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Looper;
 import android.util.Log;
-import android.view.View;
-import com.example.untitled.R;
 import com.example.untitled.model.Message;
 import com.example.untitled.model.dao.MessageDao;
 import com.example.untitled.utils.FacebookUtils;
-import com.facebook.*;
+import com.facebook.HttpMethod;
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.SessionState;
 import com.facebook.model.GraphUser;
 import org.json.JSONException;
 import org.json.JSONObject;
-import twitter4j.*;
-import twitter4j.auth.AccessToken;
-import twitter4j.auth.RequestToken;
-import twitter4j.conf.Configuration;
-import twitter4j.conf.ConfigurationBuilder;
 
 import java.util.Collection;
-import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -35,6 +28,7 @@ import java.util.Iterator;
  * To change this template use File | Settings | File Templates.
  */
 public class FacebookServiceImpl implements FacebookService {
+
 
 
     private Context context;
@@ -106,4 +100,13 @@ public class FacebookServiceImpl implements FacebookService {
     }
 
 
+    @Override
+    public List<Message> getMessagesByDays(int days) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public boolean hasAuthentication() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

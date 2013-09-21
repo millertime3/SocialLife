@@ -1,37 +1,19 @@
 package com.example.untitled;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.ListActivity;
-import android.app.LoaderManager;
-import android.content.AsyncTaskLoader;
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import com.example.untitled.model.Message;
-import com.example.untitled.model.MessageType;
 import com.example.untitled.model.dao.MessageDao;
-import com.example.untitled.services.MySQLiteHelper;
-import com.example.untitled.utils.FacebookUtils;
-import com.facebook.HttpMethod;
-import com.facebook.Request;
-import com.facebook.Response;
-import com.facebook.Session;
-import com.facebook.android.Util;
 import com.google.android.gms.plus.PlusClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.

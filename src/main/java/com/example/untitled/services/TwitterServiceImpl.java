@@ -19,6 +19,7 @@ import twitter4j.conf.ConfigurationBuilder;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -160,5 +161,15 @@ public class TwitterServiceImpl implements TwitterService{
         TwitterFactory factory = new TwitterFactory(configuration);
         Twitter twitter = factory.getInstance();
         return twitter;
+    }
+
+    @Override
+    public List<Message> getMessagesByDays(int days) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public boolean hasAuthentication() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

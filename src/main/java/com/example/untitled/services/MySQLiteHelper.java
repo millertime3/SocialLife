@@ -5,10 +5,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import com.example.untitled.model.MessageThread;
-import com.example.untitled.model.MessageType;
-
-import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
