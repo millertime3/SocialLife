@@ -1,4 +1,4 @@
-package com.example.untitled;
+package com.milyfe.untitled;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-import com.example.untitled.model.Message;
-import com.example.untitled.model.dao.MessageDao;
+import com.milyfe.untitled.model.Message;
+import com.milyfe.untitled.model.dao.MessageDao;
 import com.google.android.gms.plus.PlusClient;
 
 import java.util.ArrayList;

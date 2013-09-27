@@ -1,4 +1,4 @@
-package com.example.untitled;
+package com.milyfe.untitled;
 
 import android.app.Activity;
 import android.database.DataSetObserver;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import com.example.untitled.model.Message;
+import com.milyfe.untitled.model.Message;
 
 import java.util.List;
 

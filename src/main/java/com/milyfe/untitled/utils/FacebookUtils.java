@@ -1,8 +1,8 @@
-package com.example.untitled.utils;
+package com.milyfe.untitled.utils;
 
 import android.util.Log;
-import com.example.untitled.model.Message;
-import com.example.untitled.model.MessageType;
+import com.milyfe.untitled.model.Message;
+import com.milyfe.untitled.model.MessageType;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

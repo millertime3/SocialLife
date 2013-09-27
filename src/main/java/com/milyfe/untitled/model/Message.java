@@ -1,4 +1,4 @@
-package com.example.untitled.model;
+package com.milyfe.untitled.model;
 
 import java.util.Date;
 

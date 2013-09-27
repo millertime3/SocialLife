@@ -1,13 +1,13 @@
-package com.example.untitled.services;
+package com.milyfe.untitled.services;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import com.example.untitled.model.Message;
-import com.example.untitled.model.dao.MessageDao;
-import com.example.untitled.utils.FacebookUtils;
+import com.milyfe.untitled.model.Message;
+import com.milyfe.untitled.model.dao.MessageDao;
+import com.milyfe.untitled.utils.FacebookUtils;
 import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Response;

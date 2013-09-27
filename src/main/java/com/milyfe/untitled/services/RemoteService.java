@@ -1,4 +1,4 @@
-package com.example.untitled.services;
+package com.milyfe.untitled.services;
 
 /**
  * Created with IntelliJ IDEA.

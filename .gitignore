@@ -12,6 +12,7 @@
 bin/
 gen/
 gen*
+target
 
 # Local configuration file (sdk path, etc)
 local.properties

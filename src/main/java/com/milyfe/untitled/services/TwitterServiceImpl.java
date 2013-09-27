@@ -1,4 +1,4 @@
-package com.example.untitled.services;
+package com.milyfe.untitled.services;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,10 +6,10 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Looper;
 import android.util.Log;
-import com.example.untitled.R;
-import com.example.untitled.model.Message;
-import com.example.untitled.model.dao.MessageDao;
-import com.example.untitled.utils.TwitterUtils;
+import com.milyfe.untitled.R;
+import com.milyfe.untitled.model.Message;
+import com.milyfe.untitled.model.dao.MessageDao;
+import com.milyfe.untitled.utils.TwitterUtils;
 import twitter4j.*;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;

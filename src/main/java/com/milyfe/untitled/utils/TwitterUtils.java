@@ -1,7 +1,7 @@
-package com.example.untitled.utils;
+package com.milyfe.untitled.utils;
 
-import com.example.untitled.model.Message;
-import com.example.untitled.model.MessageType;
+import com.milyfe.untitled.model.Message;
+import com.milyfe.untitled.model.MessageType;
 import twitter4j.Status;
 
 /**

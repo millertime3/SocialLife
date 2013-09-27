@@ -1,4 +1,4 @@
-package com.example.untitled;
+package com.milyfe.untitled;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -7,18 +7,14 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.location.Location;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
-import com.example.untitled.model.Message;
-import com.example.untitled.services.FacebookService;
-import com.example.untitled.services.FacebookServiceImpl;
-import com.example.untitled.services.TwitterService;
-import com.example.untitled.services.TwitterServiceImpl;
+import com.milyfe.untitled.model.Message;
+import com.milyfe.untitled.services.FacebookService;
+import com.milyfe.untitled.services.FacebookServiceImpl;
+import com.milyfe.untitled.services.TwitterService;
+import com.milyfe.untitled.services.TwitterServiceImpl;
 import com.facebook.*;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
@@ -30,17 +26,9 @@ import com.google.android.gms.plus.PlusClient;
 import com.google.android.gms.plus.model.moments.MomentBuffer;
 import com.google.android.gms.plus.model.people.Person;
 import twitter4j.*;
-import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
-import twitter4j.conf.Configuration;
-import twitter4j.conf.ConfigurationBuilder;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 public class MyActivity extends Activity implements ConnectionCallbacks,OnConnectionFailedListener,View.OnClickListener {

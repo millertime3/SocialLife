@@ -1,13 +1,13 @@
-package com.example.untitled.model.dao;
+package com.milyfe.untitled.model.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import com.example.untitled.model.Message;
-import com.example.untitled.model.MessageType;
-import com.example.untitled.services.MySQLiteHelper;
+import com.milyfe.untitled.model.Message;
+import com.milyfe.untitled.model.MessageType;
+import com.milyfe.untitled.services.MySQLiteHelper;
 
 import java.util.ArrayList;
 import java.util.Date;

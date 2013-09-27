@@ -1,6 +1,6 @@
-package com.example.untitled.services;
+package com.milyfe.untitled.services;
 
-import com.example.untitled.model.Message;
+import com.milyfe.untitled.model.Message;
 
 import java.util.List;
 

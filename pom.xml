@@ -9,10 +9,15 @@
     <packaging>apk</packaging>
     <name>MiLyfe</name>
 
+
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>7</maven.compiler.source>
         <maven.compiler.target>7</maven.compiler.target>
+        <androidannotations.version>2.7.1</androidannotations.version>
+        <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
+        <ANDROID_HOME>/home/brian/Videos/adt-bundle-linux-x86_64-20130917/sdk</ANDROID_HOME>
     </properties>
 
     <repositories>
@@ -30,6 +35,11 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>annotations</artifactId>
+            <version>4.1.1.4</version>
+        </dependency>
+        <dependency>
             <groupId>org.twitter4j</groupId>
             <artifactId>twitter4j-core</artifactId>
             <version>[3.0,)</version>
@@ -44,12 +54,6 @@
             <artifactId>facebook-android-api</artifactId>
             <version>3.5</version>
             <type>apklib</type>
-            <exclusions>
-                <exclusion>
-                    <artifactId>support-v4</artifactId>
-                    <groupId>com.google.android</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.google.android.gms</groupId>
@@ -86,8 +90,9 @@
         <plugins>
             <plugin>
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
-                <artifactId>maven-android-plugin</artifactId>
-                <version>2.6.0</version>
+                <artifactId>android-maven-plugin
+                </artifactId>
+                <version>3.6.1</version>
                 <configuration>
                     <sdk>
                         <!-- Don't forget to set your ANDROID_HOME environment variable to your SDK directory! -->
@@ -107,13 +112,20 @@
                     <resourceOverlayDirectory>${project.basedir}/src/main/android/overlay</resourceOverlayDirectory>
                     
                     <!-- Read the Android Maven plugin documentation about these settings -->
-                    <deleteConflictingFiles>true</deleteConflictingFiles>
                     <undeployBeforeDeploy>true</undeployBeforeDeploy>
 
                 </configuration>
                 <extensions>true</extensions>
             </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-    
+
 </project>

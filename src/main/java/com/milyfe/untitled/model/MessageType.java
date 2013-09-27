@@ -1,4 +1,4 @@
-package com.example.untitled.model;
+package com.milyfe.untitled.model;
 
 /**
  * Created with IntelliJ IDEA.
