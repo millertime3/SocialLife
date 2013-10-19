@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>com.example</groupId>
+    <groupId>com.milyfe</groupId>
     <artifactId>milyfe</artifactId>
     <version>1.0</version>
 
@@ -38,6 +38,17 @@
             <groupId>com.google.android</groupId>
             <artifactId>annotations</artifactId>
             <version>4.1.1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.androidannotations</groupId>
+            <artifactId>androidannotations</artifactId>
+            <version>${androidannotations.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.androidannotations</groupId>
+            <artifactId>androidannotations-api</artifactId>
+            <version>${androidannotations.version}</version>
         </dependency>
         <dependency>
             <groupId>org.twitter4j</groupId>
