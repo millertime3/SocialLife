@@ -6,14 +6,12 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import com.activeandroid.ActiveAndroid;
+import com.activeandroid.query.Select;
 import com.milyfe.untitled.model.Message;
-import com.milyfe.untitled.model.dao.MessageDao;
 import com.google.android.gms.plus.PlusClient;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,28 +24,22 @@ public class MessageActivity extends Activity {
 
     private SimpleCursorAdapter mAdapter;
     private PlusClient plusClient;
-    private MessageDao messageDao;
     private ArrayList<View> results = new ArrayList<View>();
     ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);    //To change body of overridden methods use File | Settings | File Templates.
+        ActiveAndroid.initialize(this);
         setContentView(R.layout.message_layout);
-        messageDao = new MessageDao(this);
-//        showMessages(messageDao.getMessages());
         listView = (ListView) findViewById(R.id.List);
-        listView.setAdapter(new MessageRowAdapter(this,new ArrayList<Message>(messageDao.getMessages())));
+        List<Message> messages = new Select().from(Message.class).execute();
+        listView.setAdapter(new MessageRowAdapter(this, messages));
 
     }
 
 
 
-    private void showMessages(Collection<Message> messages) {
-        for(Message message : messages) {
-            results.add(createMessageRow(message));
-        }
-    }
 
     private Map<String, String> createMessageMap(Message message) {
         Map<String,String> map = new HashMap<String, String>();

@@ -23,12 +23,14 @@ public class FacebookUtils {
         Collection<Message> messages = new LinkedList<Message>();
         if(dataArray != null) {
             for(int i=0;i<dataArray.length();i++) {
-                Message message = new Message();
+
                 JSONObject o = dataArray.getJSONObject(i);
                 Date createdDate = new Date(Long.parseLong(o.get("created_time").toString())*1000);
-                message.setCreatedDate(createdDate);
-                message.setBody(o.get("body").toString());
-                message.setType(MessageType.FACEBOOK_INBOX);
+                Message message = new Message(createdDate,MessageType.FACEBOOK_INBOX);
+                message.setBody(o.get("message").toString());
+                String actorId= o.get("actor_id").toString();
+                message.setFrom(actorId);
+                message.setFromPicture("http://graph.facebook.com/"+actorId+"/picture");
                 messages.add(message);
             }
         } else {

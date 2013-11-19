@@ -6,9 +6,9 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Looper;
 import android.util.Log;
+import com.activeandroid.ActiveAndroid;
 import com.milyfe.untitled.R;
 import com.milyfe.untitled.model.Message;
-import com.milyfe.untitled.model.dao.MessageDao;
 import com.milyfe.untitled.utils.TwitterUtils;
 import twitter4j.*;
 import twitter4j.auth.AccessToken;
@@ -39,16 +39,14 @@ public class TwitterServiceImpl implements TwitterService{
     private static final String URL_TWITTER_OAUTH_VERIFIER = "oauth_verifier";
     private static final String URL_TWITTER_OAUTH_TOKEN = "oauth_token";
 
-    private RequestToken requestToken;
+    private static RequestToken requestToken;
     private SharedPreferences sharedPreferences;
     private Context context;
-    private MessageDao messageDao;
 
     public TwitterServiceImpl(Context context) {
         super();
         this.context = context;
         this.sharedPreferences = context.getSharedPreferences("MyPref", 0);
-        this.messageDao = new MessageDao(context);
     }
 
     @Override
@@ -91,6 +89,7 @@ public class TwitterServiceImpl implements TwitterService{
                     try {
                         Twitter twitter = buildTwitter();
                         // Get the access token
+                        Log.e("Twitter OAuth Token", "> " + uri + requestToken);
                         AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
                         storeOauthToken(accessToken);
                         Log.e("Twitter OAuth Token", "> " + accessToken.getToken());
@@ -114,16 +113,11 @@ public class TwitterServiceImpl implements TwitterService{
                     StringBuilder sb = new StringBuilder();
                     ResponseList<Status> responseList = twitter.getHomeTimeline(new Paging(1,10));
                     Iterator<Status> iterator = responseList.iterator();
-                    Collection<Message> messages = new LinkedList<Message>();
+                    ActiveAndroid.initialize(context);
                     while(iterator.hasNext()) {
                        Status status = iterator.next();
-                       messages.add(TwitterUtils.getMessageFromStatus(status));
+                       TwitterUtils.getMessageFromStatus(status).save();
                     }
-                    messageDao.open();
-                    for (Message message : messages) {
-                        messageDao.insert(message);
-                    }
-                    messageDao.close();
                 } catch (TwitterException e) {
                     e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }

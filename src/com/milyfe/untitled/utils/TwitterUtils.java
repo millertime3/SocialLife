@@ -14,11 +14,10 @@ import twitter4j.Status;
 public class TwitterUtils {
 
     public static Message getMessageFromStatus(Status status) {
-        Message message = new Message();
+        Message message = new Message(status.getCreatedAt(),MessageType.TWEET);
         message.setBody(status.getText());
         message.setFrom(status.getUser().getScreenName());
-        message.setCreatedDate(status.getCreatedAt());
-        message.setType(MessageType.TWEET);
+        message.setFromPicture(status.getUser().getBiggerProfileImageURL());
         return message;
     }
 }

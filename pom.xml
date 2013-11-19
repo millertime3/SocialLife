@@ -56,6 +56,11 @@
             <version>15.0</version>
         </dependency>
         <dependency>
+            <groupId>com.activeandroid</groupId>
+            <artifactId>activeandroid</artifactId>
+            <version>3.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>

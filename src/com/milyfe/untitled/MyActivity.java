@@ -10,6 +10,8 @@ import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import com.activeandroid.ActiveAndroid;
+import com.google.android.gms.plus.model.moments.Moment;
 import com.milyfe.untitled.model.Message;
 import com.milyfe.untitled.services.FacebookService;
 import com.milyfe.untitled.services.FacebookServiceImpl;
@@ -60,13 +62,12 @@ public class MyActivity extends Activity implements ConnectionCallbacks,OnConnec
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         twitterService = new TwitterServiceImpl(getApplicationContext());
-        facebookService = new FacebookServiceImpl(getApplicationContext());
+        facebookService = new FacebookServiceImpl(this,savedInstanceState);
         setContentView(R.layout.main);
         mPlusClient = new PlusClient.Builder(this, this, this)
                 .setVisibleActivities("http://schemas.google.com/AddActivity",
-                        "http://schemas.google.com/BuyActivity",
-                        "https://www.googleapis.com/auth/plus.moments.read",
-                        "https://www.googleapis.com/auth/plus.moments.write")
+                        "https://www.googleapis.com/auth/plus.me",
+                        "https://www.googleapis.com/auth/plus.activity.read")
                 .build();
         // Progress bar to be displayed if the connection failure is not resolved.
         mConnectionProgressDialog = new ProgressDialog(this);
@@ -76,7 +77,6 @@ public class MyActivity extends Activity implements ConnectionCallbacks,OnConnec
 
         //Oauth callback
         twitterService.processOauthCallback(getIntent().getData());
-
     }
 
     private void loadMPlusMessages() {
@@ -84,13 +84,17 @@ public class MyActivity extends Activity implements ConnectionCallbacks,OnConnec
             @Override
             public void onMomentsLoaded(ConnectionResult connectionResult, MomentBuffer moments, String s, String s2) {
                 int count = moments.getCount();
+                for(Moment moment : moments) {
+//                       momen
+                }
+
             }
         });
     }
 
     public void loadTwitterMessages(View view) {
         twitterService.loadMessages();
-        facebookService.loadMessages();
+        facebookService.loadMessages(getApplicationContext());
     }
 
     public void showTwitterMessage(View view) {
@@ -199,6 +203,7 @@ public class MyActivity extends Activity implements ConnectionCallbacks,OnConnec
     @Override
     protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
         super.onActivityResult(requestCode, responseCode, intent);
+        facebookService.requestOauthentication(this,requestCode,responseCode,intent);
         if (requestCode == REQUEST_CODE_RESOLVE_ERR && responseCode == RESULT_OK) {
             mConnectionResult = null;
             mPlusClient.connect();
@@ -249,5 +254,11 @@ public class MyActivity extends Activity implements ConnectionCallbacks,OnConnec
         super.onStop();
         mPlusClient.disconnect();
         mLocationClient.disconnect();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        facebookService.onSaveInstanceState(outState);
     }
 }
